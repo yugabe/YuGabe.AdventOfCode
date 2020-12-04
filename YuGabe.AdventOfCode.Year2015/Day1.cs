@@ -6,7 +6,7 @@ namespace YuGabe.AdventOfCode.Year2015
     public class Day1 : Day
     {
         public override object ExecutePart1()
-        
+
         {
             return Input.Count(c => c == '(') - Input.Count(c => c == ')');
         }
@@ -15,7 +15,7 @@ namespace YuGabe.AdventOfCode.Year2015
         {
             var currentLevel = 0;
             var index = 0;
-            foreach(var c in Input)
+            foreach (var c in Input)
             {
                 index++;
                 if (c == '(') currentLevel++;

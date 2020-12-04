@@ -13,7 +13,8 @@ namespace YuGabe.AdventOfCode.Year2015
 
         public override object ExecutePart1()
         {
-            return Input.Max(deer => {
+            return Input.Max(deer =>
+            {
                 for (var time = 0; time < 2503; time++)
                 {
                     if (!deer.Resting)
