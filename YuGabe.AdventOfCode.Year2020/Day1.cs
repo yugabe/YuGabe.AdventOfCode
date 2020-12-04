@@ -3,7 +3,7 @@ using Tidy.AdventOfCode;
 
 namespace YuGabe.AdventOfCode.Year2020
 {
-    class Day1 : Day<int>.NewLineSplitParsed
+    class Day1 : Day.NewLineSplitParsed<int>
     {
         public override object ExecutePart1()
         {

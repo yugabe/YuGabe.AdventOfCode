@@ -3,20 +3,20 @@ using Tidy.AdventOfCode;
 
 namespace YuGabe.AdventOfCode.Year2020
 {
-    public class Day2 : Day<Day2.Password>.ForMany<Day2.Password>
+    public class Day2 : Day<Day2.Password[]>.WithParser<Day2.Password>
     {
         public override object ExecutePart1() => Input.Count(p => p.IsValid);
 
         public override object ExecutePart2() => Input.Count(p => p.IsValidPart2);
 
-        public class Password : IMultipleParser<Password>
+        public class Password : IParser<Password[]>
         {
             public int From { get; init; }
             public int To { get; init; }
             public char Letter { get; init; }
             public string Text { get; init; } = null!;
 
-            public Password[] ParseMany(string rawInput) => rawInput.Split('\n').Select(r => new Password
+            public Password[] Parse(string rawInput) => rawInput.Split('\n').Select(r => new Password
             {
                 From = int.Parse(r.Split('-')[0]),
                 To = int.Parse(r.Split('-')[1].Split(' ')[0]),

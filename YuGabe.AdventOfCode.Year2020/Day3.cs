@@ -5,7 +5,7 @@ using Tidy.AdventOfCode;
 
 namespace YuGabe.AdventOfCode.Year2020
 {
-    public class Day3 : Day<string>.NewLineSplitParsed
+    public class Day3 : Day.NewLineSplitParsed<string>
     {
         public override object ExecutePart1() =>
             TreesInSlope(3, 1);
