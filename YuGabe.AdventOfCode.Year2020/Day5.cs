@@ -5,7 +5,7 @@ using Tidy.AdventOfCode;
 
 namespace YuGabe.AdventOfCode.Year2020
 {
-    class Day5 : Day<HashSet<int>>
+    public class Day5 : Day<HashSet<int>>
     {
         public override HashSet<int> ParseInput(string rawInput) => 
             rawInput.Split('\n').Select(i => Convert.ToInt32(i.Replace('F', '0').Replace('B', '1').Replace('R', '1').Replace('L', '0'), 2)).ToHashSet();
