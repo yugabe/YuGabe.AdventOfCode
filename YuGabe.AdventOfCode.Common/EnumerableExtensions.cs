@@ -70,5 +70,10 @@ namespace YuGabe.AdventOfCode
         }
 
         public static void Enqueue<T>(this Queue<T> queue, params T[] items) => queue.Enqueue(items.AsEnumerable());
+
+        public static (TResult? min, TResult? max) MinMaxE<T, TResult>(this IEnumerable<T> source, Func<T, TResult> elementSelector) =>
+            (source.Min(elementSelector), source.Max(elementSelector));
+        public static (T? min, T? max) MinMax<T>(this IEnumerable<T> source) =>
+            (source.Min(), source.Max());
     }
 }
