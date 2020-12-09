@@ -17,11 +17,11 @@ namespace YuGabe.AdventOfCode.Year2015
         private static Func<Ingredient, long>[] PropertySelectors { get; } = { i => i.Capacity, i => i.Durability, i => i.Flavor, i => i.Texture };
 
         public override object ExecutePart1() =>
-            GetQuantities(100, 4).Select(q => q.ToArray())
+            GetQuantities(100, 4)
                 .Max(q => PropertySelectors.Aggregate(1L, (acc, s) => acc * Math.Max(Input.WithIndexes().Sum(i => q[i.Index] * s(i.Element)), 0)));
 
         public override object ExecutePart2() =>
-            GetQuantities(100, 4).Select(q => q.ToArray())
+            GetQuantities(100, 4)
                 .Where(q => Input.WithIndexes().Sum(i => i.Element.Calories * q[i.Index]) == 500)
                 .Max(q => PropertySelectors.Aggregate(1L, (acc, s) => acc * Math.Max(Input.WithIndexes().Sum(i => q[i.Index] * s(i.Element)), 0)));
         public IEnumerable<int[]> GetQuantities(int sum, int length) =>
