@@ -1,0 +1,3 @@
+[submodule "Tidy.AdventOfCode"]
+	path = Tidy.AdventOfCode
+	url = https://github.com/yugabe/Tidy.AdventOfCode

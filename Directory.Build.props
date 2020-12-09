@@ -1,14 +1,14 @@
 ﻿<Project>
 
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(ProjectName)' != 'Tidy.AdventOfCode'">
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\YuGabe.AdventOfCode.Common\YuGabe.AdventOfCode.Common.csproj" Condition="'$(ProjectName)' != 'YuGabe.AdventOfCode.Common'" />
+
+  <ItemGroup Condition="'$(ProjectName)' != 'Tidy.AdventOfCode'">
+    <ProjectReference Condition="'$(ProjectName)' != 'YuGabe.AdventOfCode.Common'" Include="..\YuGabe.AdventOfCode.Common\YuGabe.AdventOfCode.Common.csproj" />
   </ItemGroup>
-  
+
 </Project>
