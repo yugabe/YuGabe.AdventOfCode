@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json;
 using Tidy.AdventOfCode;
 
 namespace YuGabe.AdventOfCode.Year2015
@@ -25,42 +28,20 @@ namespace YuGabe.AdventOfCode.Year2015
 
         public override object ExecutePart2()
         {
-            throw new NotImplementedException();
-            // This was done with Newtonsoft's API originally.
-            //var input = (JToken)JsonConvert.DeserializeObject(Input);
-            //var queue = new Queue<JToken>(new[] { input });
-            //long sum = 0;
-            //while (queue.TryDequeue(out var current))
-            //{
-            //    switch (current)
-            //    {
-            //        case JArray array:
-            //            foreach (var child in array.Children())
-            //                queue.Enqueue(child);
-            //            break;
-            //        case JObject @object:
-            //            var red = false;
-            //            foreach (var (k, v) in @object)
-            //            {
-            //                if (v.ToString() == "red")
-            //                {
-            //                    red = true;
-            //                    break;
-            //                }
-            //            }
-            //            if (!red)
-            //                foreach (var (k, child) in @object)
-            //                    queue.Enqueue(child);
-            //            break;
-            //        case JValue val:
-            //            if (val.Value.GetType() == typeof(long))
-            //                sum += (long)val.Value;
-            //            break;
-            //        default:
-            //            break;
-            //    }
-            //}
-            //return sum;
+            var queue = new Queue<JsonElement>(new[] { JsonDocument.Parse(Input).RootElement });
+            long sum = 0;
+            while (queue.TryDequeue(out var current))
+            {
+                queue.Enqueue(current.ValueKind switch
+                {
+                    JsonValueKind.Array => current.EnumerateArray(),
+                    JsonValueKind.Object => current.EnumerateObject().All(element => element.Value.ToString() != "red") ? current.EnumerateObject().Select(o => o.Value) : Enumerable.Empty<JsonElement>(),
+                    _ => Enumerable.Empty<JsonElement>()
+                });
+
+                sum += current.ValueKind == JsonValueKind.Number ? current.GetInt64() : 0;
+            }
+            return sum;
         }
     }
 }
