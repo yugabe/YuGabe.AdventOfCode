@@ -75,5 +75,15 @@ namespace YuGabe.AdventOfCode
             (source.Min(elementSelector), source.Max(elementSelector));
         public static (T? min, T? max) MinMax<T>(this IEnumerable<T> source) =>
             (source.Min(), source.Max());
+
+        public static IEnumerable<(T? previous, T current, T? next)> WithNeighbors<T>(this IEnumerable<T> source)
+        {
+            T? previous = default;
+            foreach(var item in source)
+            {
+                yield return (previous, item, source.Skip(1).FirstOrDefault());
+                previous = item;
+            }
+        }
     }
 }
