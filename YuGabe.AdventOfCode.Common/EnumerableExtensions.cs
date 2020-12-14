@@ -14,10 +14,13 @@ namespace YuGabe.AdventOfCode
             while (source.Any())
             {
                 var partitionIterator = source.TakeWhile(i => !partitioningPredicate(i));
+                source = source.Skip(partitionIterator.Count());
                 if (previousBoundarySet)
+                {
                     partitionIterator = partitionIterator.Prepend(previousBoundary!);
+                    previousBoundarySet = false;
+                }
                 var partition = partitionIterator.ToList().AsReadOnly();
-                source = source.Skip(partition.Count);
 
                 if (!source.TryGetFirst(out var boundary))
                 {
@@ -30,36 +33,40 @@ namespace YuGabe.AdventOfCode
                 if (!partitioningPredicate(boundary))
                     throw new InvalidOperationException("Invalid partitioning state.");
 
-                if (partitioningMethod == PartitioningMethod.KeepWithLast)
+                switch (partitioningMethod)
                 {
-                    yield return partition.Append(boundary);
-                }
-                else if (partitioningMethod == PartitioningMethod.Ignore)
-                {
-                    yield return partition;
-                }
-                else if (partitioningMethod == PartitioningMethod.KeepSingle)
-                {
-                    yield return partition;
-                    yield return new[] { boundary }.ToList().AsReadOnly();
-                }
-                else if (partitioningMethod == PartitioningMethod.KeepWithNext)
-                {
-                    yield return partition;
-                    previousBoundary = boundary;
-                    previousBoundarySet = true;
+                    case PartitioningMethod.Ignore:
+                        if (partition.Count > 0)
+                            yield return partition;
+                        break;
+                    case PartitioningMethod.KeepWithLast:
+                        yield return partition.Append(boundary);
+                        break;
+                    case PartitioningMethod.KeepSingle:
+                        if (partition.Count > 0)
+                            yield return partition;
+                        yield return new[] { boundary }.ToList().AsReadOnly(); 
+                        break;
+                    case PartitioningMethod.KeepWithNext:
+                        if (partition.Count > 0)
+                            yield return partition;
+                        previousBoundary = boundary;
+                        previousBoundarySet = true;
+                        break;
+                    default:
+                        throw new InvalidOperationException();
                 }
             }
         }
 
         public static bool TryGetFirst<T>(this IEnumerable<T> source, [NotNullWhen(true)] out T? value)
         {
-            value = default;
             foreach (var item in source)
             {
                 value = item!;
                 return true;
             }
+            value = default;
             return false;
         }
 
