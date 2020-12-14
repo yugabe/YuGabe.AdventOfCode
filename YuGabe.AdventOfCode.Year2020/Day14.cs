@@ -18,7 +18,7 @@ namespace YuGabe.AdventOfCode.Year2020
         {
             var memory = new Dictionary<ulong, ulong>();
 
-            foreach (var (orMask, andMask, address, value) in Input.SelectMany(i => i.values.Select(v => (orMask: i.mask.Aggregate(0UL, (acc, b) => acc << 1 | (b == true ? 1 : 0)), andMask: i.mask.Aggregate(0UL, (acc, b) => acc << 1 | (b == false ? 1 : 0)), address: v.address, value: v.value))))
+            foreach (var (orMask, andMask, address, value) in Input.SelectMany(i => i.values.Select(v => (orMask: i.mask.Aggregate(0UL, (acc, b) => acc << 1 | (b == true ? 1 : 0)), andMask: i.mask.Aggregate(0UL, (acc, b) => acc << 1 | (b == false ? 1 : 0)), v.address, v.value))))
                 memory[address] = value & ~andMask | orMask;
 
             return memory.Aggregate(0UL, (acc, e) => acc + e.Value);
