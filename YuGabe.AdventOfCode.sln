@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30717.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YuGabe.AdventOfCode.Common", "YuGabe.AdventOfCode.Common\YuGabe.AdventOfCode.Common.csproj", "{8E4B14D6-9CD4-45C8-B48B-6C10976497C5}"
 EndProject
@@ -23,6 +23,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YuGabe.AdventOfCode.Year2019", "YuGabe.AdventOfCode.Year2019\YuGabe.AdventOfCode.Year2019.csproj", "{3A6D475B-4F58-492A-9F71-C6473859D6D0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tidy.AdventOfCode", "Tidy.AdventOfCode\Tidy.AdventOfCode.csproj", "{46A9FC1F-297E-4095-AC44-4FA74D514F25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGabe.AdventOfCode.Year2021", "YuGabe.AdventOfCode.Year2021\YuGabe.AdventOfCode.Year2021.csproj", "{2F2F16FA-7F52-48A3-B67B-2ED8D8A4240C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{46A9FC1F-297E-4095-AC44-4FA74D514F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46A9FC1F-297E-4095-AC44-4FA74D514F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46A9FC1F-297E-4095-AC44-4FA74D514F25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F2F16FA-7F52-48A3-B67B-2ED8D8A4240C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F2F16FA-7F52-48A3-B67B-2ED8D8A4240C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F2F16FA-7F52-48A3-B67B-2ED8D8A4240C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F2F16FA-7F52-48A3-B67B-2ED8D8A4240C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
