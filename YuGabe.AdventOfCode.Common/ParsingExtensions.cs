@@ -2,6 +2,9 @@
 
 public static class ParsingExtensions
 {
+    public static string[] SplitAtNewLines(this string text, string separator = "\n", StringSplitOptions splitOptions = StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+        => text.Split(separator, splitOptions);
+
     public static (string token1, string? token2) SplitToTuple2(this string text)
     {
         var tokens = text.Split();
