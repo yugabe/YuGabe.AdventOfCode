@@ -36,5 +36,5 @@ public class Day3 : Day<bool[][]>
     }
 
     public override bool[][] ParseInput(string rawInput)
-        => rawInput.GetLines().Select(l => l.Select(c => c == '1').ToArray()).ToArray();
+        => rawInput.SplitAtNewLines().Select(l => l.Select(c => c == '1').ToArray()).ToArray();
 }
