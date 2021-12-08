@@ -42,8 +42,10 @@ public static class ParsingExtensions
         => text.SplitAtNewLines(lineSeparator, lineSplitOptions).Select(l => l.SplitToTuple4(separator, splitOptions)).Select(selector).ToArray();
 
     private static MethodInfo GenericToMethod { get; } = typeof(ParsingExtensions).GetMethod(nameof(To), 1, BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(string) }, null) ?? throw new MissingMethodException(nameof(ParsingExtensions), nameof(To));
+    private static MethodInfo GenericToManyMethod { get; } = typeof(ParsingExtensions).GetMethod(nameof(ToMany), 1, BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(string), typeof(string), typeof(SSO) }, null) ?? throw new MissingMethodException(nameof(ParsingExtensions), nameof(ToMany));
 
     private static object To(Type type, string? text) => GenericToMethod.MakeGenericMethod(type).Invoke(null, new[] { text })!;
+    private static object ToMany(Type type, string? text, string? separator, SSO splitOptions) => GenericToManyMethod.MakeGenericMethod(type).Invoke(null, new object?[] { text, separator, splitOptions })!;
 
     public static T To<T>(this string? text)
     {
@@ -58,8 +60,13 @@ public static class ParsingExtensions
 
         return (T)ctor.Invoke(ctorParams.Select(parameter =>
         {
-            if (parameter.GetCustomAttribute<SplitAttribute>() is { } split)
-                return To(parameter.ParameterType, text?.Split(split.Separator, split.StringSplitOptions).ElementAtOrDefault(split.Index));
+            if (parameter.GetCustomAttribute<SplitAttribute>() is { } split && text?.Split(split.Separator, split.StringSplitOptions)?.ElementAtOrDefault(split.Index) is var value)
+            {
+                if (parameter.GetCustomAttribute<InnerSplitAttribute>() is { } innerSplit)
+                    return ToMany(parameter.ParameterType.GetInterfaces().FirstOrDefault(t => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IEnumerable<>))?.GenericTypeArguments.ElementAtOrDefault(0) ?? throw new NotSupportedException($"The provided constructor parameter {parameter.Name} cannot be assigned to from an {nameof(IEnumerable<object>)}, as its type doesn't implement it."), value, innerSplit.Separator, innerSplit.StringSplitOptions);
+
+                return To(parameter.ParameterType, value);
+            }
 
             return To(parameter.ParameterType, text);
         }).ToArray())!;
