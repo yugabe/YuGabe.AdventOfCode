@@ -3,28 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YuGabe.AdventOfCode.Common", "YuGabe.AdventOfCode.Common\YuGabe.AdventOfCode.Common.csproj", "{8E4B14D6-9CD4-45C8-B48B-6C10976497C5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YuGabe.AdventOfCode.Year2020", "YuGabe.AdventOfCode.Year2020\YuGabe.AdventOfCode.Year2020.csproj", "{D45B23DA-A8D2-457F-B6F1-58FD7B7BDEF1}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7DBED018-BE75-4EA7-A1E6-83848B3E6B7F}"
-	ProjectSection(SolutionItems) = preProject
-		Directory.Build.props = Directory.Build.props
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YuGabe.AdventOfCode.Year2015", "YuGabe.AdventOfCode.Year2015\YuGabe.AdventOfCode.Year2015.csproj", "{3193E994-7C14-4A4B-A1A4-8625170DD45D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YuGabe.AdventOfCode.Year2016", "YuGabe.AdventOfCode.Year2016\YuGabe.AdventOfCode.Year2016.csproj", "{FF8A21FF-7C4D-46EC-8469-D42387B31D7B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YuGabe.AdventOfCode.Year2017", "YuGabe.AdventOfCode.Year2017\YuGabe.AdventOfCode.Year2017.csproj", "{B7021C9E-D87D-46A7-B971-99B298EAAD60}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YuGabe.AdventOfCode.Year2018", "YuGabe.AdventOfCode.Year2018\YuGabe.AdventOfCode.Year2018.csproj", "{74CE0605-7457-4616-8F94-79615857D4D1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YuGabe.AdventOfCode.Year2019", "YuGabe.AdventOfCode.Year2019\YuGabe.AdventOfCode.Year2019.csproj", "{3A6D475B-4F58-492A-9F71-C6473859D6D0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tidy.AdventOfCode", "Tidy.AdventOfCode\Tidy.AdventOfCode.csproj", "{46A9FC1F-297E-4095-AC44-4FA74D514F25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGabe.AdventOfCode.Year2021", "YuGabe.AdventOfCode.Year2021\YuGabe.AdventOfCode.Year2021.csproj", "{2F2F16FA-7F52-48A3-B67B-2ED8D8A4240C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGabe.AdventOfCode", "YuGabe.AdventOfCode\YuGabe.AdventOfCode.csproj", "{E85EC4EE-D6F2-4C88-BFAB-DE071C1A0165}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,42 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8E4B14D6-9CD4-45C8-B48B-6C10976497C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E4B14D6-9CD4-45C8-B48B-6C10976497C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E4B14D6-9CD4-45C8-B48B-6C10976497C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E4B14D6-9CD4-45C8-B48B-6C10976497C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D45B23DA-A8D2-457F-B6F1-58FD7B7BDEF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D45B23DA-A8D2-457F-B6F1-58FD7B7BDEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D45B23DA-A8D2-457F-B6F1-58FD7B7BDEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D45B23DA-A8D2-457F-B6F1-58FD7B7BDEF1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3193E994-7C14-4A4B-A1A4-8625170DD45D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3193E994-7C14-4A4B-A1A4-8625170DD45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3193E994-7C14-4A4B-A1A4-8625170DD45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3193E994-7C14-4A4B-A1A4-8625170DD45D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF8A21FF-7C4D-46EC-8469-D42387B31D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF8A21FF-7C4D-46EC-8469-D42387B31D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF8A21FF-7C4D-46EC-8469-D42387B31D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF8A21FF-7C4D-46EC-8469-D42387B31D7B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B7021C9E-D87D-46A7-B971-99B298EAAD60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B7021C9E-D87D-46A7-B971-99B298EAAD60}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B7021C9E-D87D-46A7-B971-99B298EAAD60}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B7021C9E-D87D-46A7-B971-99B298EAAD60}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74CE0605-7457-4616-8F94-79615857D4D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74CE0605-7457-4616-8F94-79615857D4D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74CE0605-7457-4616-8F94-79615857D4D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74CE0605-7457-4616-8F94-79615857D4D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3A6D475B-4F58-492A-9F71-C6473859D6D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A6D475B-4F58-492A-9F71-C6473859D6D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A6D475B-4F58-492A-9F71-C6473859D6D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A6D475B-4F58-492A-9F71-C6473859D6D0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{46A9FC1F-297E-4095-AC44-4FA74D514F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{46A9FC1F-297E-4095-AC44-4FA74D514F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46A9FC1F-297E-4095-AC44-4FA74D514F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46A9FC1F-297E-4095-AC44-4FA74D514F25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F2F16FA-7F52-48A3-B67B-2ED8D8A4240C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F2F16FA-7F52-48A3-B67B-2ED8D8A4240C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F2F16FA-7F52-48A3-B67B-2ED8D8A4240C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F2F16FA-7F52-48A3-B67B-2ED8D8A4240C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E85EC4EE-D6F2-4C88-BFAB-DE071C1A0165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E85EC4EE-D6F2-4C88-BFAB-DE071C1A0165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E85EC4EE-D6F2-4C88-BFAB-DE071C1A0165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E85EC4EE-D6F2-4C88-BFAB-DE071C1A0165}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

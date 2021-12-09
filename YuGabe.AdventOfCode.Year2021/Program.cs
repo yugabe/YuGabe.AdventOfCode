@@ -1,1 +1,0 @@
-﻿await Runner.CreateDefault().ExecuteAsync();
