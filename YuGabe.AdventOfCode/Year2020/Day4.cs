@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
-using Tidy.AdventOfCode;
 
 namespace YuGabe.AdventOfCode.Year2020
 {

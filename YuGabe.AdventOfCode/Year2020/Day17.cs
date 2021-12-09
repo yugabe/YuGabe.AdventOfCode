@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Tidy.AdventOfCode;
-
-namespace YuGabe.AdventOfCode.Year2020
+﻿namespace YuGabe.AdventOfCode.Year2020
 {
     public class Day17 : Day<Day17.ConwaySpace3D>
     {

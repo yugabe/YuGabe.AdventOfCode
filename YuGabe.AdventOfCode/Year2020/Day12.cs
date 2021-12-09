@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Tidy.AdventOfCode;
-
-namespace YuGabe.AdventOfCode.Year2020
+﻿namespace YuGabe.AdventOfCode.Year2020
 {
     using static Day12.Command;
     public class Day12 : Day<(Day12.Command command, int value)[]>

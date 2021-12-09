@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tidy.AdventOfCode;
-
-namespace YuGabe.AdventOfCode.Year2020
+﻿namespace YuGabe.AdventOfCode.Year2020
 {
     public class Day18 : Day<Day18.HomeworkExpression[]>
     {

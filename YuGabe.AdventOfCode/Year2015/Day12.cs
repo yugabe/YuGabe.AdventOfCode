@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
-using Tidy.AdventOfCode;
 
 namespace YuGabe.AdventOfCode.Year2015
 {

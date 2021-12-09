@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace YuGabe.AdventOfCode
+﻿namespace YuGabe.AdventOfCode
 {
     public static class FunctionalExtensions
     {

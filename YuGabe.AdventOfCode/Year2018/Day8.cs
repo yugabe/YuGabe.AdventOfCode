@@ -1,7 +1,3 @@
-using System;
-using System.Linq;
-using Tidy.AdventOfCode;
-
 namespace YuGabe.AdventOfCode.Year2018
 {
     public class Day8 : Day<int[]>

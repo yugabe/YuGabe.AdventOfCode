@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using Tidy.AdventOfCode;
-
-namespace YuGabe.AdventOfCode.Year2020
+﻿namespace YuGabe.AdventOfCode.Year2020
 {
     public class Day9 : Day.NewLineSplitParsed<long>
     {

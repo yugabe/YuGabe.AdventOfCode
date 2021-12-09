@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using Tidy.AdventOfCode;
-
 #nullable disable
 namespace YuGabe.AdventOfCode.Year2015
 {

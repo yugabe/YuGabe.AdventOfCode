@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using Tidy.AdventOfCode;
-
-namespace YuGabe.AdventOfCode.Year2020
+﻿namespace YuGabe.AdventOfCode.Year2020
 {
     public class Day13 : Day<(int Arrival, int?[] Buses)>
     {

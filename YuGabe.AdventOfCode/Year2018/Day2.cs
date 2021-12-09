@@ -1,6 +1,3 @@
-using System.Linq;
-using Tidy.AdventOfCode;
-
 namespace YuGabe.AdventOfCode.Year2018
 {
     public class Day2 : Day.NewLineSplitParsed<string>

@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using Tidy.AdventOfCode;
-using static YuGabe.AdventOfCode.Year2020.Day16;
+﻿using static YuGabe.AdventOfCode.Year2020.Day16;
 
 namespace YuGabe.AdventOfCode.Year2020
 {

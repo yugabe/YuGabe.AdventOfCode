@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Tidy.AdventOfCode;
-
 namespace YuGabe.AdventOfCode.Year2015
 {
     public class Day6 : Day<List<Day6.Instruction>>

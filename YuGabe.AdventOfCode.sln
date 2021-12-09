@@ -5,7 +5,15 @@ VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tidy.AdventOfCode", "Tidy.AdventOfCode\Tidy.AdventOfCode.csproj", "{46A9FC1F-297E-4095-AC44-4FA74D514F25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGabe.AdventOfCode", "YuGabe.AdventOfCode\YuGabe.AdventOfCode.csproj", "{E85EC4EE-D6F2-4C88-BFAB-DE071C1A0165}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YuGabe.AdventOfCode", "YuGabe.AdventOfCode\YuGabe.AdventOfCode.csproj", "{E85EC4EE-D6F2-4C88-BFAB-DE071C1A0165}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{323A5A58-CF81-44F1-99FB-6E769A99A911}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.gitmodules = .gitmodules
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

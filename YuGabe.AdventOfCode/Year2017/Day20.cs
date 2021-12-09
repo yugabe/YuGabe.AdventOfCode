@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Numerics;
-using Tidy.AdventOfCode;
+﻿using System.Numerics;
 
 namespace YuGabe.AdventOfCode.Year2017
 {

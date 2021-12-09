@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Tidy.AdventOfCode;
-
-namespace YuGabe.AdventOfCode.Year2017
+﻿namespace YuGabe.AdventOfCode.Year2017
 {
     public class Day17 : Day<int>
     {

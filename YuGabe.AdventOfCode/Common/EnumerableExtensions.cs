@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace YuGabe.AdventOfCode
 {
@@ -45,7 +42,7 @@ namespace YuGabe.AdventOfCode
                     case PartitioningMethod.KeepSingle:
                         if (partition.Count > 0)
                             yield return partition;
-                        yield return new[] { boundary }.ToList().AsReadOnly(); 
+                        yield return new[] { boundary }.ToList().AsReadOnly();
                         break;
                     case PartitioningMethod.KeepWithNext:
                         if (partition.Count > 0)
@@ -86,11 +83,25 @@ namespace YuGabe.AdventOfCode
         public static IEnumerable<(T? previous, T current, T? next)> WithNeighbors<T>(this IEnumerable<T> source)
         {
             T? previous = default;
-            foreach(var item in source)
+            foreach (var item in source)
             {
                 yield return (previous, item, source.Skip(1).FirstOrDefault());
                 previous = item;
             }
+        }
+
+        public static IEnumerable<IEnumerable<T>> Permutate<T>(this IEnumerable<T> source)
+        {
+            if (!source.Any())
+                yield break;
+            var first = source.First();
+            if (source.Skip(1).Any())
+            {
+                foreach (var permutation in source.SelectMany((element, index) => source.Where((_, i) => i != index).Permutate().Select(others => others.Prepend(element))))
+                    yield return permutation;
+            }
+            else
+                yield return new[] { first };
         }
     }
 }

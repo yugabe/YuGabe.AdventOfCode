@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace YuGabe.AdventOfCode
+﻿namespace YuGabe.AdventOfCode
 {
     public class Graphs
     {
