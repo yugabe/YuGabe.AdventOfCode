@@ -1,11 +1,10 @@
 ﻿using System.Reflection;
-using SSO = System.StringSplitOptions;
 
 namespace YuGabe.AdventOfCode;
 
 public static class ParsingExtensions
 {
-    const SSO RemoveAndTrim = SSO.RemoveEmptyEntries | SSO.TrimEntries;
+    private const SSO RemoveAndTrim = SSO.RemoveEmptyEntries | SSO.TrimEntries;
 
     public static (string token1, string? token2) SplitToTuple2(this string text, string? separator = " ", SSO splitOptions = RemoveAndTrim)
     {
