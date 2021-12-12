@@ -8,14 +8,9 @@ public class Day11 : Day<Dictionary<Point2D<int>, int>>
 
     public async Task<(int totalFlashes, int cycles)> Cycle(bool visualize, int delay, Func<int, bool> stopPredicate, CancellationToken cancellationToken = default)
     {
-        var ((minX, maxX), (minY, maxY)) = (Input.MinMax(e => e.Key.X), Input.MinMax(e => e.Key.Y));
+        var ((minX, maxX), (minY, maxY), totalFlashes, cycles, handledFlashes) = (Input.MinMax(e => e.Key.X), Input.MinMax(e => e.Key.Y), 0, 0, new HashSet<Point2D<int>>());
 
-        var totalFlashes = 0;
-
-        var cycles = 0;
-        
-        var handledFlashes = new HashSet<Point2D<int>>();
-
+        Console.Clear();
         while (!stopPredicate(cycles))
         {
             cycles++;
@@ -34,9 +29,9 @@ public class Day11 : Day<Dictionary<Point2D<int>, int>>
 
             if (visualize && delay > 0)
             {
-                Console.Clear();
+                Console.SetCursorPosition(0, 0);
                 Console.WindowWidth = Console.BufferWidth = Math.Max(Math.Max(Console.WindowWidth, Console.BufferWidth), maxX - minX + 2);
-                Console.WriteLine($"After {cycles}:\n\n{string.Join("\n", Range(minY, maxY - minY + 1).Select(y => string.Join("", Range(minX, maxX - minY + 1).Select(x => new Point2D<int>(x, y)).Select(key => (key, value: Input[key])).Select(e => handledFlashes.Contains(e.key) ? Negative("0") : e.value.ToString()))))}\n");
+                Console.WriteLine($"After {cycles}:\n\n{string.Join("\n", Range(minY, maxY - minY + 1).Select(y => string.Join("", Range(minX, maxX - minY + 1).Select(x => new Point2D<int>(x, y)).Select(key => (key, value: Input[key])).Select(e => handledFlashes.Contains(e.key) ? Foreground("*", System.Drawing.Color.FromArgb(128 + Random.Shared.Next(128), 128 + Random.Shared.Next(128), 128 + Random.Shared.Next(128))) : Foreground("*", System.Drawing.Color.FromArgb(Random.Shared.Next(128), Random.Shared.Next(128), Random.Shared.Next(128)))))))}\n");
                 await Task.Delay(delay, cancellationToken);
             }
 
@@ -51,9 +46,9 @@ public class Day11 : Day<Dictionary<Point2D<int>, int>>
         return (totalFlashes, cycles);
     }
 
-    public override async Task<object> ExecutePart1Async(CancellationToken cancellationToken = default) 
+    public override async Task<object> ExecutePart1Async(CancellationToken cancellationToken = default)
         => (await Cycle(true, 50, i => i == 100, cancellationToken)).totalFlashes;
 
-    public override async Task<object> ExecutePart2Async(CancellationToken cancellationToken = default) 
+    public override async Task<object> ExecutePart2Async(CancellationToken cancellationToken = default)
         => (await Cycle(true, 50, _ => Input.Values.All(v => v == 0), cancellationToken)).cycles;
 }
