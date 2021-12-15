@@ -103,5 +103,7 @@ namespace YuGabe.AdventOfCode
             else
                 yield return new[] { first };
         }
+
+        public static void AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> source, TKey key, TValue valueToAdd, Func<TValue, TValue> newValueFunc) => source[key] = source.TryGetValue(key, out var oldValue) ? newValueFunc(oldValue) : valueToAdd;
     }
 }
