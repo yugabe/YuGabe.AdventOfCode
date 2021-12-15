@@ -8,12 +8,21 @@ public class Day15 : Day<Dictionary<Point, int>>
 
     public static int CalculatePathRisk(Dictionary<Point, int> map)
     {
-        var (maxX, maxY) = (map.Keys.Max(k => k.X), map.Keys.Max(k => k.Y));
-        var rollingRisks = new Dictionary<Point, int>() { [new(0, 0)] = 0 };
-
-        foreach (var (x, y) in map.Keys.OrderBy(k => k.Y).ThenBy(k => k.X))
-            foreach (var (neighborCoordinate, risk) in new Point[] { new(x - 1, y), new(x + 1, y), new(x, y - 1), new(x, y + 1) }.Where(map.ContainsKey).Select(n => (Coordinate: n, Risk: map[n] + rollingRisks[new(x, y)])))
-                rollingRisks.AddOrUpdate(neighborCoordinate, risk, oldValue => Math.Min(oldValue, risk));
+        var (maxX, maxY, modified, rollingRisks) = (map.Keys.Max(k => k.X), map.Keys.Max(k => k.Y), false, new Dictionary<Point, int>() { [new(0, 0)] = 0 });
+        do
+        {
+            modified = false;
+            foreach (var (x, y) in map.Keys.OrderBy(k => k.Y).ThenBy(k => k.X))
+                foreach (var (neighborCoordinate, risk) in new Point[] { new(x - 1, y), new(x + 1, y), new(x, y - 1), new(x, y + 1) }.Where(map.ContainsKey).Select(n => (Coordinate: n, Risk: map[n] + rollingRisks[new(x, y)])))
+                    rollingRisks.AddOrUpdate(neighborCoordinate, risk, oldValue =>
+                    {
+                        var newValue = Math.Min(oldValue, risk);
+                        if (newValue != oldValue && !modified)
+                            modified = true;
+                        return newValue;
+                    });
+        }
+        while (modified);
 
         return rollingRisks[new(maxX, maxY)];
     }
@@ -22,6 +31,7 @@ public class Day15 : Day<Dictionary<Point, int>>
 
     public override object ExecutePart2()
     {
+        //VisualizePart2();
         var (biggerMap, maxX, maxY) = (new Dictionary<Point, int>(Input), Input.Keys.Max(k => k.X), Input.Keys.Max(k => k.Y));
         for (var dy = 0; dy <= 4; dy++)
             for (var dx = 0; dx <= 4; dx++)
