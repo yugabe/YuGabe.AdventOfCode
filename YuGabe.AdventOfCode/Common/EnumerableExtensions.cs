@@ -109,5 +109,12 @@ namespace YuGabe.AdventOfCode
         public static IEnumerable<(T1 Left, T2 Right)> CartesianProduct<T1, T2>(this IEnumerable<T1> leftSource, IEnumerable<T2> rightSource) => leftSource.SelectMany(l => rightSource.Select(r => (l, r)));
 
         public static void AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> source, TKey key, TValue valueToAdd, Func<TValue, TValue> newValueFunc) => source[key] = source.TryGetValue(key, out var oldValue) ? newValueFunc(oldValue) : valueToAdd;
+
+        public static IEnumerable<T> LoopInfinitely<T>(this IEnumerable<T> source)
+        {
+            while (true)
+                foreach (var item in source)
+                    yield return item;
+        }
     }
 }
