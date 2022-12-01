@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "YuGabe.AdventOfCode.Generator": {
+      "commandName": "Project",
+      "workingDirectory": "$(SolutionDir)/YuGabe.AdventOfCode"
+    }
+  }
+}
