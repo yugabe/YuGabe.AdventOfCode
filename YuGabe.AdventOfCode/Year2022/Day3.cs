@@ -10,7 +10,7 @@ public class Day3 : Day<Day3.Rucksack[]>
 
     public override object ExecutePart1() => Input.Sum(sack => GetPriority(sack.Left.Intersect(sack.Right).Single()));
 
-    public override object ExecutePart2() => Input.Select(elf => elf.All).Chunk(3).Sum(group => GetPriority(group[0].Intersect(group[1]).Intersect(group[2]).Single()));
+    public override object ExecutePart2() => Input.Select(elf => elf.All).Chunk(3).Sum(group => GetPriority(group.Aggregate((current, next) => current.Intersect(next).ToHashSet()).Single()));
 
     private static int GetPriority(char c) => c switch
     {
