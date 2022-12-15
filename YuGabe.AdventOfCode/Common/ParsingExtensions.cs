@@ -72,4 +72,17 @@ public static class ParsingExtensions
 
     }
     public static T[] ToMany<T>(this string text, string? separator = "\n", SSO splitOptions = SSO.TrimEntries | SSO.RemoveEmptyEntries) => text.SplitAtNewLines(separator, splitOptions).Select(line => line.To<T>()).ToArray();
+
+    public static T[] ToMany<T>(this string text, Func<string, T> itemSelector, string? separator = "\n", SSO splitOptions = SSO.TrimEntries | SSO.RemoveEmptyEntries) => text.SplitAtNewLines(separator, splitOptions).Select(itemSelector).ToArray();
+
+    public static T[][] ToManyMany<T>(this string text, Func<string, T> itemSelector, string? outerSeparator = "\n", string? innerSeparator = " ", SSO outerSplitOptions = SSO.TrimEntries | SSO.RemoveEmptyEntries, SSO innerSplitOptions = SSO.TrimEntries | SSO.RemoveEmptyEntries) => text.SplitAtNewLines(outerSeparator, outerSplitOptions).Select(line => line.Split(innerSeparator, innerSplitOptions).Select(itemSelector).ToArray()).ToArray();
+
+    public static (T first, T second) Split2<T>(this IEnumerable<T> items)
+    {
+        var array = items.Take(3).ToArray();
+        if (array.Length != 2)
+            throw new InvalidOperationException();
+        return (array[0], array[1]);
+    }
+
 }

@@ -12,13 +12,5 @@
             action(item);
             return item;
         }
-
-        public static (T first, T second) Split2<T>(this IEnumerable<T> items)
-        {
-            var array = items.Take(3).ToArray();
-            if (array.Length != 2)
-                throw new InvalidOperationException();
-            return (array[0], array[1]);
-        }
     }
 }

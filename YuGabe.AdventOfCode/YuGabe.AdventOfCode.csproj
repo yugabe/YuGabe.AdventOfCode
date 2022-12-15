@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+	  <Using Alias="Point" Include="YuGabe.AdventOfCode.Point2D&lt;int&gt;"/>
     <ProjectReference Include="..\Tidy.AdventOfCode\Tidy.AdventOfCode.csproj" />
   </ItemGroup>
 
