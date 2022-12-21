@@ -28,10 +28,29 @@ public record struct Point2D<T>(T X, T Y) where T : INumber<T>
 
     public override string ToString() => $"({X},{Y})";
 }
-public record struct Point3D<T>(T X, T Y, T Z)
+public record struct Point3D<T>(T X, T Y, T Z) where T : INumber<T>
 {
     public static implicit operator (T X, T Y, T Z)(Point3D<T> value) => (value.X, value.Y, value.Z);
     public static implicit operator Point3D<T>((T X, T Y, T Z) value) => new(value.X, value.Y, value.Z);
+
+    public static Point3D<T> operator +(Point3D<T> left, Point3D<T> right) => new(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+    public static Point3D<T> operator -(Point3D<T> left, Point3D<T> right) => new(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
+    public static Point3D<T> operator *(Point3D<T> point, T value) => new(point.X * value, point.Y * value, point.Z * value);
+
+    private static Point3D<T>[] NeighborCoordinates { get; } = new Point3D<T>[]
+    {
+        new(-T.One, T.Zero, T.Zero), new(T.One, T.Zero, T.Zero),
+        new(T.Zero, -T.One, T.Zero), new(T.Zero, T.One, T.Zero),
+        new(T.Zero, T.Zero, -T.One), new(T.Zero, T.Zero, T.One),
+    };
+    public IEnumerable<Point3D<T>> Neighbors
+    {
+        get
+        {
+            var self = this;
+            return NeighborCoordinates.Select(n => self + n);
+        }
+    }
 }
 public record struct Point4D<T>(T X, T Y, T Z, T W)
 {
