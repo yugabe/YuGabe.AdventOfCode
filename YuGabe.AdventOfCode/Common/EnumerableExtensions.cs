@@ -118,5 +118,12 @@ namespace YuGabe.AdventOfCode
                 foreach (var item in source)
                     yield return item;
         }
+
+        public static T GetNext<T>(this IEnumerator<T> enumerator)
+        {
+            if (!enumerator.MoveNext())
+                throw new InvalidOperationException();
+            return enumerator.Current;
+        }
     }
 }
