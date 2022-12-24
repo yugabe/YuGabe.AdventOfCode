@@ -27,8 +27,6 @@ public partial class Day19 : Day<Day19.Blueprint[]>
             // 6: Resources[Obsidian]
             // 7: Resources[Clay]
             // 8: Resources[Ore]
-
-            // could try partitioning into queues by modulo of priority?
             var queue = new PriorityQueue<short[], int>(new[] { (new short[] { minutes, 0, 0, 0, 1, 0, 0, 0, 0 }, int.MinValue) });
             short max = 0;
             Span<short> nextState = stackalloc short[9];
@@ -74,7 +72,7 @@ public partial class Day19 : Day<Day19.Blueprint[]>
                     }
 
                     maxWait++;
-                    nextState[0] = (short)(minutesRemaining - maxWait);
+                    var m = nextState[0] = (short)(minutesRemaining - maxWait);
                     nextState[1] = (short)(state[1] + (robotType == 0 ? 1 : 0));
                     nextState[2] = (short)(state[2] + (robotType == 1 ? 1 : 0));
                     nextState[3] = (short)(state[3] + (robotType == 2 ? 1 : 0));
@@ -83,17 +81,12 @@ public partial class Day19 : Day<Day19.Blueprint[]>
                     nextState[6] = (short)(state[6] + (state[2] * maxWait) - costs[1]);
                     nextState[7] = (short)(state[7] + (state[3] * maxWait) - costs[2]);
                     nextState[8] = (short)(state[8] + (state[4] * maxWait) - costs[3]);
-                    var m = nextState[0];
-                    var robots = nextState[1];
-                    var bounds = nextState[5] + (robots * m); // definite number of geodes
-                    for (var r = robots; r < robots + m; r++)
+                    if (nextState[5] + (m * nextState[1]) + (m * (m - 1) / 2) > max)
                     {
-                        bounds += r * (m + r - robots - 1); // if every minute after, we'd build a geode harvester (regardless of whether we can afford to)...
-                        if (bounds > max)
-                        {
+                        if (nextState[4] < blueprint.RobotCosts[0][3] + blueprint.RobotCosts[1][3] + blueprint.RobotCosts[2][3]
+                                && nextState[3] < blueprint.RobotCosts[1][2]
+                                && nextState[2] < blueprint.RobotCosts[0][1])
                             queue.Enqueue(nextState.ToArray(), -((nextState[1] * nextState[0]) + nextState[5]));
-                            break;
-                        }
                     }
                 nextRobot:;
                 }
