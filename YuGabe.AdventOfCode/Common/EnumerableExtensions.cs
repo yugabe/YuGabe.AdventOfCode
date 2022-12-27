@@ -84,12 +84,34 @@ namespace YuGabe.AdventOfCode
 
         public static IEnumerable<(T? previous, T current, T? next)> WithNeighbors<T>(this IEnumerable<T> source)
         {
-            T? previous = default;
+            T? previous = default, current = default;
+            var index = 0;
             foreach (var item in source)
             {
-                yield return (previous, item, source.Skip(1).FirstOrDefault());
-                previous = item;
+                if (index == 0)
+                {
+                    previous = item;
+                }
+                else if (index == 1)
+                {
+                    current = item;
+                }
+                else
+                {
+                    if (index == 2)
+                        yield return (default, previous!, current);
+                    yield return (previous, current!, item);
+                    previous = current;
+                    current = item;
+                } 
+                index++;
             }
+            if (index == 1)
+                yield return (default, previous!, default);
+            else if (index == 2)
+                yield return (default, previous!, current);
+            if (index > 1)
+                yield return (previous, current!, default);
         }
 
         public static IEnumerable<IEnumerable<T>> Permutate<T>(this IEnumerable<T> source)
