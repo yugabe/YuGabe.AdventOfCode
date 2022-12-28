@@ -14,11 +14,11 @@ public class Map2D<T> : IReadOnlyDictionary<(int X, int Y), Map2D<T>.Node>
         public int Y => Key.Y;
         public T Value { get; set; }
 
-        public Node? Top => Map.GetValueOrDefault((X, Y - 1));
+        public Node? Up => Map.GetValueOrDefault((X, Y - 1));
         public Node? Right => Map.GetValueOrDefault((X + 1, Y));
         public Node? Down => Map.GetValueOrDefault((X, Y + 1));
         public Node? Left => Map.GetValueOrDefault((X - 1, Y));
-        public IEnumerable<Node> AllTop => new DynamicEnumerable<Node>(this, c => c.Top).Skip(1);
+        public IEnumerable<Node> AllUp => new DynamicEnumerable<Node>(this, c => c.Up).Skip(1);
         public IEnumerable<Node> AllRight => new DynamicEnumerable<Node>(this, c => c.Right).Skip(1);
         public IEnumerable<Node> AllDown => new DynamicEnumerable<Node>(this, c => c.Down).Skip(1);
         public IEnumerable<Node> AllLeft => new DynamicEnumerable<Node>(this, c => c.Left).Skip(1);
@@ -26,7 +26,7 @@ public class Map2D<T> : IReadOnlyDictionary<(int X, int Y), Map2D<T>.Node>
         {
             get
             {
-                yield return AllTop;
+                yield return AllUp;
                 yield return AllRight;
                 yield return AllDown;
                 yield return AllLeft;
@@ -36,12 +36,13 @@ public class Map2D<T> : IReadOnlyDictionary<(int X, int Y), Map2D<T>.Node>
         {
             get
             {
-                yield return Top;
+                yield return Up;
                 yield return Right;
                 yield return Down;
                 yield return Left;
             }
         }
+        public override string ToString() => $"[{X},{Y}]: {Value}";
     }
 
     public Map2D(Dictionary<(int X, int Y), T> map)
