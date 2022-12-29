@@ -31,6 +31,17 @@ public record struct Point2D<T>(T X, T Y) where T : INumber<T>
     public static Point2D<T> operator *(Point2D<T> point, T value) => new(point.X * value, point.Y * value);
 
     public override string ToString() => $"({X},{Y})";
+
+    public IEnumerable<Point2D<T>> CardinalNeighbors
+    {
+        get
+        {
+            yield return Up;
+            yield return Right;
+            yield return Down;
+            yield return Left;
+        }
+    }
 }
 public record struct Point3D<T>(T X, T Y, T Z) where T : INumber<T>
 {
