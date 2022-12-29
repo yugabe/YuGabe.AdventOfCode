@@ -26,6 +26,10 @@ public record struct Point2D<T>(T X, T Y) where T : INumber<T>
             throw new InvalidOperationException("Lines can only go straight on either X or Y axis.");
     }
 
+    public static Point2D<T> operator +(Point2D<T> left, Point2D<T> right) => new(left.X + right.X, left.Y + right.Y);
+    public static Point2D<T> operator -(Point2D<T> left, Point2D<T> right) => new(left.X - right.X, left.Y - right.Y);
+    public static Point2D<T> operator *(Point2D<T> point, T value) => new(point.X * value, point.Y * value);
+
     public override string ToString() => $"({X},{Y})";
 }
 public record struct Point3D<T>(T X, T Y, T Z) where T : INumber<T>
